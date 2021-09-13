@@ -57,7 +57,7 @@ public class UIexportar extends javax.swing.JFrame {
                 reinicioCiclosActionPerformed(evt);
             }
         });
-        getContentPane().add(reinicioCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 300, 230, -1));
+        getContentPane().add(reinicioCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 300, 260, -1));
 
         reinicioPagosGastos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         reinicioPagosGastos.setText("Reiniciar tablas de ingresos y egresos");
@@ -66,7 +66,7 @@ public class UIexportar extends javax.swing.JFrame {
                 reinicioPagosGastosActionPerformed(evt);
             }
         });
-        getContentPane().add(reinicioPagosGastos, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 350, 330, 30));
+        getContentPane().add(reinicioPagosGastos, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 350, 370, 30));
 
         exportar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         exportar.setText("Exportar");

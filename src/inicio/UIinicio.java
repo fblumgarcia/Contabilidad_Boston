@@ -73,6 +73,7 @@ public class UIinicio extends javax.swing.JFrame {
         getContentPane().add(exportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 550, 200, 100));
         exportar.getAccessibleContext().setAccessibleDescription("");
 
+        escudo.setIcon(new javax.swing.ImageIcon("/home/fernando/NetBeansProjects/Contabilidad_Boston/src/inicio/Escudo.jpg")); // NOI18N
         getContentPane().add(escudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 10, -1, -1));
 
         pack();
