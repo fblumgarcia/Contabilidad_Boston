@@ -13,7 +13,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class RegistroGasto {
-   String dir="jdbc:mysql://localhost:3306/colboston", usr="root",pwd="cronoalgea97";
+   String dir="jdbc:mysql://localhost:3306/colboston", usr="root",pwd="1997";
     public void crearConexion(){
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,7 +39,7 @@ public class RegistroGasto {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM registro_gastos");
-             PrintWriter pw= new PrintWriter(new File("/home/fernando/Gastos.csv"));
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\Gastos.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM registro_gastos");
              rs=stmt.executeQuery();

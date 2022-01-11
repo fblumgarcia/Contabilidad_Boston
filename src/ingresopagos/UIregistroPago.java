@@ -287,6 +287,7 @@ public class UIregistroPago extends javax.swing.JFrame {
         dergrado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(dergrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 165, 120, 27));
 
+        registro.setBackground(new java.awt.Color(51, 153, 255));
         registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         registro.setText("Registrar");
         registro.addActionListener(new java.awt.event.ActionListener() {

@@ -114,6 +114,7 @@ public class UIregistrosemant extends javax.swing.JFrame {
         anio.setText("2021");
         getContentPane().add(anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 220, 60));
 
+        registro.setBackground(new java.awt.Color(51, 204, 255));
         registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         registro.setText("Registrar");
         registro.addActionListener(new java.awt.event.ActionListener() {

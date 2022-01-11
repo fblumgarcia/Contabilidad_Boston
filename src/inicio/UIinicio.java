@@ -4,6 +4,7 @@ package inicio;
 import Exportarbd.UIexportar;
 import ingresogastos.UIingresoGasto;
 import ingresopagos.UIbotones;
+import javax.swing.JFrame;
 
 
 
@@ -11,6 +12,7 @@ public class UIinicio extends javax.swing.JFrame {
 
     public UIinicio() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     
@@ -27,10 +29,11 @@ public class UIinicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contabilidad Bostón");
-        setPreferredSize(new java.awt.Dimension(1250, 725));
-        setResizable(false);
+        setMaximumSize(new java.awt.Dimension(2000, 2000));
+        setMinimumSize(new java.awt.Dimension(50, 50));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        ingPagos.setBackground(new java.awt.Color(255, 204, 102));
         ingPagos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ingPagos.setText("Ingreso Pagos");
         ingPagos.addActionListener(new java.awt.event.ActionListener() {
@@ -38,9 +41,10 @@ public class UIinicio extends javax.swing.JFrame {
                 ingPagosActionPerformed(evt);
             }
         });
-        getContentPane().add(ingPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 250, 200, 100));
+        getContentPane().add(ingPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, 200, 100));
         ingPagos.getAccessibleContext().setAccessibleDescription("");
 
+        ingGastos.setBackground(new java.awt.Color(255, 153, 153));
         ingGastos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ingGastos.setText("Ingresos Gastos");
         ingGastos.addActionListener(new java.awt.event.ActionListener() {
@@ -48,33 +52,39 @@ public class UIinicio extends javax.swing.JFrame {
                 ingGastosActionPerformed(evt);
             }
         });
-        getContentPane().add(ingGastos, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, 200, 100));
+        getContentPane().add(ingGastos, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, 200, 100));
         ingGastos.getAccessibleContext().setAccessibleDescription("");
 
         pregunta.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         pregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pregunta.setText("¿Qué desea hacer?");
-        getContentPane().add(pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 190, 250, -1));
+        getContentPane().add(pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, 250, -1));
 
         titulo.setFont(new java.awt.Font("Trebuchet MS", 3, 36)); // NOI18N
+        titulo.setForeground(new java.awt.Color(0, 51, 204));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("Contabilidad Colegio Bostón");
+        titulo.setText("Contabilidad Colegio Boston");
         titulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         titulo.setPreferredSize(new java.awt.Dimension(1100, 29));
-        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 20, 580, 40));
+        getContentPane().add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 580, 40));
 
+        exportar.setBackground(new java.awt.Color(51, 255, 255));
         exportar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         exportar.setText("Exportar Tablas");
+        exportar.setPreferredSize(new java.awt.Dimension(161, 31));
         exportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exportarActionPerformed(evt);
             }
         });
-        getContentPane().add(exportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 550, 200, 100));
+        getContentPane().add(exportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 200, 100));
         exportar.getAccessibleContext().setAccessibleDescription("");
 
-        escudo.setIcon(new javax.swing.ImageIcon("/home/fernando/NetBeansProjects/Contabilidad_Boston/src/inicio/Escudo.jpg")); // NOI18N
-        getContentPane().add(escudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 10, -1, -1));
+        escudo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inicio/Escudo.jpg"))); // NOI18N
+        escudo.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/inicio/Escudo.jpg"))); // NOI18N
+        getContentPane().add(escudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 180, 180, 270));
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
         setLocationRelativeTo(null);
@@ -114,4 +124,8 @@ public class UIinicio extends javax.swing.JFrame {
     private javax.swing.JLabel pregunta;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
+
+    private void setExtendState(int MAXIMIZED_BOTH) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

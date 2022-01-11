@@ -41,6 +41,7 @@ public class UIcrearEstudiante extends javax.swing.JFrame {
         nombre.setText("Nombre");
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 700, 100));
 
+        crear.setBackground(new java.awt.Color(153, 102, 255));
         crear.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         crear.setText("Crear");
         crear.addActionListener(new java.awt.event.ActionListener() {

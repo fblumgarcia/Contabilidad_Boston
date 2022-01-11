@@ -123,6 +123,7 @@ public class UIingresoGasto extends javax.swing.JFrame {
         descripcion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         getContentPane().add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 225, 400, 60));
 
+        registro.setBackground(new java.awt.Color(102, 255, 255));
         registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         registro.setText("Registrar");
         registro.addActionListener(new java.awt.event.ActionListener() {

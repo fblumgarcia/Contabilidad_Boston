@@ -42,8 +42,9 @@ public class UIbotones extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 3, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("¿Qué desea hacer?");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 160, 50));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 200, 50));
 
+        crearestudiante.setBackground(new java.awt.Color(204, 255, 102));
         crearestudiante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         crearestudiante.setText("Crear estudiante");
         crearestudiante.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +54,7 @@ public class UIbotones extends javax.swing.JFrame {
         });
         getContentPane().add(crearestudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 277, 100));
 
+        registropago.setBackground(new java.awt.Color(204, 204, 255));
         registropago.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         registropago.setText("Registrar Pago");
         registropago.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +64,7 @@ public class UIbotones extends javax.swing.JFrame {
         });
         getContentPane().add(registropago, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 277, 100));
 
+        semanterior.setBackground(new java.awt.Color(153, 153, 153));
         semanterior.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         semanterior.setText("Registro Pago semestre anterior o de certificados");
         semanterior.addActionListener(new java.awt.event.ActionListener() {

@@ -49,6 +49,7 @@ public class UIexportar extends javax.swing.JFrame {
         jLabel1.setText("¿Cuál tabla desea exportar?");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 20, -1, -1));
 
+        reinicioCiclos.setBackground(new java.awt.Color(255, 0, 51));
         reinicioCiclos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         reinicioCiclos.setText("Reiniciar tablas de ciclos");
         reinicioCiclos.setPreferredSize(new java.awt.Dimension(230, 31));
@@ -59,6 +60,7 @@ public class UIexportar extends javax.swing.JFrame {
         });
         getContentPane().add(reinicioCiclos, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 300, 260, -1));
 
+        reinicioPagosGastos.setBackground(new java.awt.Color(255, 0, 51));
         reinicioPagosGastos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         reinicioPagosGastos.setText("Reiniciar tablas de ingresos y egresos");
         reinicioPagosGastos.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +111,7 @@ public class UIexportar extends javax.swing.JFrame {
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
-            case "Ciclo VI":try {ep.exportaciclo5();
+            case "Ciclo VI":try {ep.exportaciclo6();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;           

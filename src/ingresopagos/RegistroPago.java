@@ -17,7 +17,7 @@ import java.util.List;
 public class RegistroPago {
     public static int matriculabd,papeleriabd,segurobd,plataformabd,simulacrobd,mens1bd,mens2bd,mens3bd,mens4bd,mens5bd,otrosbd,servsocialbd,dergradobd; 
     public static String recmatriculabd,recpapeleriabd,recsegurobd,recplataformabd,recsimulacrobd,recmens1bd,recmens2bd,recmens3bd,recmens4bd,recmens5bd,recotrosbd,recservsocialbd,recdergradobd;
-    String dir="jdbc:mysql://localhost:3306/colboston", usr="root",pwd="";
+    String dir="jdbc:mysql://localhost:3306/colboston", usr="root",pwd="1997";
     public void registro_pagos(){//LLena la tabla de registro de pagos que es la general
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
@@ -583,7 +583,7 @@ public void exportapagos() throws FileNotFoundException{//Para exportar a archiv
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM registro_pagos");
-             PrintWriter pw= new PrintWriter(new File("/home/fernando/Pagos.csv"));
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\Pagos.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM registro_pagos");
              rs=stmt.executeQuery();
@@ -611,7 +611,7 @@ public void exportaciclo3() throws FileNotFoundException{//Para exportar a archi
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iii");
-             PrintWriter pw= new PrintWriter(new File("/home/fernando/CicloIII.csv"));
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\CicloIII.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM iii");
              rs=stmt.executeQuery();
@@ -660,7 +660,7 @@ public void exportaciclo4() throws FileNotFoundException{//Para exportar a archi
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iv");
-             PrintWriter pw= new PrintWriter(new File("/home/fernando/CicloIV.csv"));
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\CicloIV.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM iv");
              rs=stmt.executeQuery();
@@ -709,7 +709,7 @@ public void exportaciclo5() throws FileNotFoundException{//Para exportar a archi
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM v");
-             PrintWriter pw= new PrintWriter(new File("/home/fernando/CicloV.csv"));
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\CicloV.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM v");
              rs=stmt.executeQuery();
@@ -758,7 +758,7 @@ public void exportaciclo6() throws FileNotFoundException{//Para exportar a archi
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vi");
-             PrintWriter pw= new PrintWriter(new File("/home/fernando/CicloVI.csv"));
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\CicloVI.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM vi");
              rs=stmt.executeQuery();

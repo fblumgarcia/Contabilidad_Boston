@@ -31,6 +31,7 @@ public class UIconfirmaEliminar extends javax.swing.JFrame {
         jLabel1.setText("¿Esta seguro de reiniciar las tablas?");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 55, 320, -1));
 
+        si.setBackground(new java.awt.Color(51, 255, 51));
         si.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         si.setText("Si");
         si.addActionListener(new java.awt.event.ActionListener() {
@@ -40,6 +41,7 @@ public class UIconfirmaEliminar extends javax.swing.JFrame {
         });
         getContentPane().add(si, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 80, 60));
 
+        no.setBackground(new java.awt.Color(0, 0, 255));
         no.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         no.setText("No");
         no.addActionListener(new java.awt.event.ActionListener() {
