@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class UIexportar extends javax.swing.JFrame {
 
-    public static String tables; 
+    public static String tables,periodo2; 
     
     public UIexportar() {
         initComponents();
@@ -27,6 +27,8 @@ public class UIexportar extends javax.swing.JFrame {
         exportar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
+        periodo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Exportar");
@@ -85,6 +87,18 @@ public class UIexportar extends javax.swing.JFrame {
         jLabel2.setText("¿Desea reiniciar alguna tabla?");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 230, -1, -1));
 
+        periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        periodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                periodoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(periodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 120, 27));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Semestre o Año");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -100,26 +114,38 @@ public class UIexportar extends javax.swing.JFrame {
         System.out.println(exporta);
     
        if(null!=exporta)switch (exporta) {
-            case "Ciclo III":try {ep.exportaciclo3();
+            case "Ciclo III":try {
+                periodo2=periodo.getText();
+                ep.exportaciclo3();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
-            case "Ciclo IV": try {ep.exportaciclo4();
+            case "Ciclo IV": try {
+                periodo2=periodo.getText();
+                ep.exportaciclo4();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-            case "Ciclo V":try {ep.exportaciclo5();
+            case "Ciclo V":try {
+                periodo2=periodo.getText();
+                ep.exportaciclo5();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
-            case "Ciclo VI":try {ep.exportaciclo6();
+            case "Ciclo VI":try {
+                periodo2=periodo.getText();
+                ep.exportaciclo6();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;           
-            case "Ingresos":try {ep.exportapagos();
+            case "Ingresos":try {
+                periodo2=periodo.getText();
+                ep.exportapagos();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
                 break;
-            case "Egresos":try {ex.exportagastos();
+            case "Egresos":try {
+                periodo2=periodo.getText();
+                ex.exportagastos();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
                 break;
@@ -143,6 +169,10 @@ public class UIexportar extends javax.swing.JFrame {
         UIconfirmaEliminar nv=new UIconfirmaEliminar();
         nv.setVisible(true);        
     }//GEN-LAST:event_reinicioPagosGastosActionPerformed
+
+    private void periodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_periodoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,7 +213,9 @@ public class UIexportar extends javax.swing.JFrame {
     private javax.swing.JButton exportar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField periodo;
     private javax.swing.JButton reinicioCiclos;
     private javax.swing.JButton reinicioPagosGastos;
     private javax.swing.JComboBox<String> selecciona;

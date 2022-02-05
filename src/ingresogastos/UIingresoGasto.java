@@ -82,12 +82,12 @@ public class UIingresoGasto extends javax.swing.JFrame {
 
         anioi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         anioi.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        anioi.setText("2021");
+        anioi.setText("2022");
         getContentPane().add(anioi, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 75, 150, 60));
 
         concepto.setBackground(new java.awt.Color(204, 204, 204));
         concepto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        concepto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Arriendo", "Aseo", "Nómina", "Papelería", "Préstamos", "Varios" }));
+        concepto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arriendo", "Aseo", "Nómina", "Papelería", "Préstamos", "Otros" }));
         concepto.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 conceptoItemStateChanged(evt);

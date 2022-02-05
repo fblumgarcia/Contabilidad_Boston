@@ -20,7 +20,7 @@ public class UIregistroPago extends javax.swing.JFrame {
 
     public static int dia2,mes2,anio2,valor2,total2,mens12,mens22,mens32,mens42,mens52,recibo2,mens13,mens23,mens33,mens43,mens53;//Declarando variables
     public static int otros2,servsocial2,dergrado2,papeleria2,seguro2,simulacro2,plataforma2,matricula2,otros3,servsocial3,dergrado3,papeleria3,seguro3,simulacro3,plataforma3,matricula3,total3;
-    public static String recmens12,recmens22,recmens32,recmens42,recmens52,recotros2,recservsocial2,recdergrado2,recpapeleria2,recseguro2,recsimulacro2,recplataforma2;
+    public static String semestre2,recmens12,recmens22,recmens32,recmens42,recmens52,recotros2,recservsocial2,recdergrado2,recpapeleria2,recseguro2,recsimulacro2,recplataforma2;
     public static String nombre2,ciclo2,nombre3,recmatricula2;   
     //Los que tienen sufijo 3 es para la comprobación del total con conceptos
     //Los de sufijo 2 para actualizar en base de datos         
@@ -71,7 +71,8 @@ public class UIregistroPago extends javax.swing.JFrame {
         ldergrado = new javax.swing.JLabel();
         dergrado = new javax.swing.JTextField();
         registro = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
+        jLabel11 = new javax.swing.JLabel();
+        semestre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro Pago");
@@ -90,7 +91,7 @@ public class UIregistroPago extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Ciclo");
         jLabel7.setPreferredSize(new java.awt.Dimension(120, 22));
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 3, 120, 27));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 3, 120, 27));
 
         ciclo.setBackground(new java.awt.Color(204, 204, 204));
         ciclo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -100,13 +101,13 @@ public class UIregistroPago extends javax.swing.JFrame {
                 cicloActionPerformed(evt);
             }
         });
-        getContentPane().add(ciclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 3, 120, 27));
+        getContentPane().add(ciclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 3, 120, 27));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Nombres y Apellidos");
+        jLabel1.setText("Nombres");
         jLabel1.setPreferredSize(new java.awt.Dimension(170, 27));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 3, 170, 27));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 3, 110, 27));
 
         nombreb.setBackground(new java.awt.Color(204, 204, 204));
         nombreb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
@@ -115,16 +116,16 @@ public class UIregistroPago extends javax.swing.JFrame {
                 nombrebActionPerformed(evt);
             }
         });
-        getContentPane().add(nombreb, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 3, 250, 27));
+        getContentPane().add(nombreb, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 3, 250, 27));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Total");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 3, 120, 27));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 57, 120, 27));
 
         total.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         total.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 3, 120, 27));
+        getContentPane().add(total, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 57, 120, 27));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,7 +140,7 @@ public class UIregistroPago extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mes");
         jLabel3.setPreferredSize(new java.awt.Dimension(170, 27));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 30, 170, 27));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 120, 27));
 
         mes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         mes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -148,98 +149,98 @@ public class UIregistroPago extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Año");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 30, 120, 27));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 170, 27));
 
         anio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         anio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        anio.setText("2021");
-        getContentPane().add(anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 120, 27));
+        anio.setText("2022");
+        getContentPane().add(anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 120, 27));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Recibo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 57, 120, 27));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 57, 120, 27));
 
         recibo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         recibo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(recibo, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 57, 120, 27));
+        getContentPane().add(recibo, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 57, 120, 27));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Matrícula");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 57, 170, 27));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 57, 170, 27));
 
         matricula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         matricula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 57, 120, 27));
+        getContentPane().add(matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 57, 120, 27));
 
         Seguro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Seguro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Seguro.setText("Seguro");
-        getContentPane().add(Seguro, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 57, 120, 27));
+        getContentPane().add(Seguro, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 84, 120, 27));
 
         seguro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         seguro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(seguro, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 57, 120, 27));
+        getContentPane().add(seguro, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 84, 120, 27));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Papelería");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 84, 120, 27));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 84, 120, 27));
 
         papeleria.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         papeleria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(papeleria, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 84, 120, 27));
+        getContentPane().add(papeleria, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 84, 120, 27));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Plataforma");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 84, 170, 27));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 84, 170, 27));
 
         plataforma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         plataforma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(plataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 84, 120, 27));
+        getContentPane().add(plataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 84, 120, 27));
 
         Plataforma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Plataforma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Plataforma.setText("Simulacro");
-        getContentPane().add(Plataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 84, 120, 27));
+        getContentPane().add(Plataforma, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 111, 120, 27));
 
         simulacro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         simulacro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(simulacro, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 84, 120, 27));
+        getContentPane().add(simulacro, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 111, 120, 27));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Mes 1");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 111, 120, 27));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 111, 120, 27));
 
         mens1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         mens1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(mens1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 111, 120, 27));
+        getContentPane().add(mens1, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 111, 120, 27));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Mes 2");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 111, 170, 27));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 111, 170, 27));
 
         mens2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         mens2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(mens2, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 111, 120, 27));
+        getContentPane().add(mens2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 111, 120, 27));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Mes 3");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 111, 120, 27));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 138, 120, 27));
 
         mens3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         mens3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(mens3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 111, 120, 27));
+        getContentPane().add(mens3, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 138, 120, 27));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Mes 4");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 138, 120, 27));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 138, 120, 27));
 
         mens4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         mens4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -248,44 +249,44 @@ public class UIregistroPago extends javax.swing.JFrame {
                 mens4ActionPerformed(evt);
             }
         });
-        getContentPane().add(mens4, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 138, 120, 27));
+        getContentPane().add(mens4, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 138, 120, 27));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Mes 5");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 138, 170, 27));
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 138, 170, 27));
 
         mens5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         mens5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(mens5, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 138, 120, 27));
+        getContentPane().add(mens5, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 138, 120, 27));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Otros");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 138, 120, 27));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 165, 120, 27));
 
         otros.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         otros.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(otros, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 138, 120, 27));
+        getContentPane().add(otros, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 165, 120, 27));
 
         lservsocial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lservsocial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lservsocial.setText("Servicio Social");
         lservsocial.setPreferredSize(new java.awt.Dimension(120, 27));
-        getContentPane().add(lservsocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 165, 120, 27));
+        getContentPane().add(lservsocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 165, 120, 27));
 
         servsocial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         servsocial.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(servsocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 165, 120, 27));
+        getContentPane().add(servsocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 165, 120, 27));
 
         ldergrado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         ldergrado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ldergrado.setText("Derechos de grado");
-        getContentPane().add(ldergrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 165, 170, 27));
+        getContentPane().add(ldergrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 165, 170, 27));
 
         dergrado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         dergrado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(dergrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 165, 120, 27));
+        getContentPane().add(dergrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 165, 120, 27));
 
         registro.setBackground(new java.awt.Color(51, 153, 255));
         registro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -295,8 +296,22 @@ public class UIregistroPago extends javax.swing.JFrame {
                 registroActionPerformed(evt);
             }
         });
-        getContentPane().add(registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, 170, 27));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 960, 20));
+        getContentPane().add(registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 170, 27));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Semestre");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 3, 120, 27));
+
+        semestre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        semestre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        semestre.setText("año-I o II");
+        semestre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                semestreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(semestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 3, 120, 27));
 
         pack();
         setLocationRelativeTo(null);
@@ -363,6 +378,7 @@ public class UIregistroPago extends javax.swing.JFrame {
                 dergrado.setVisible(false);
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
+                semestre2=semestre.getText();
                 cic.carguenombreciclo3();
                 break;
             case "IV":
@@ -371,6 +387,7 @@ public class UIregistroPago extends javax.swing.JFrame {
                 dergrado.setVisible(false);
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
+                semestre2=semestre.getText();
                 cic.carguenombreciclo4();
                 break;
             case "V":
@@ -379,6 +396,7 @@ public class UIregistroPago extends javax.swing.JFrame {
                 dergrado.setVisible(false);
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
+                semestre2=semestre.getText();
                 cic.carguenombreciclo5();
                 break;
             case "VI":
@@ -387,6 +405,7 @@ public class UIregistroPago extends javax.swing.JFrame {
                 lservsocial.setVisible(true);
                 dergrado.setVisible(true);
                 ldergrado.setVisible(true);
+                semestre2=semestre.getText();
                 cic.carguenombreciclo6();
                 break;
             
@@ -425,6 +444,10 @@ public class UIregistroPago extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mens4ActionPerformed
 
+    private void semestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_semestreActionPerformed
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -444,6 +467,7 @@ public class UIregistroPago extends javax.swing.JFrame {
     private javax.swing.JTextField dia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -459,7 +483,6 @@ public class UIregistroPago extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel ldergrado;
     private javax.swing.JLabel lservsocial;
@@ -477,6 +500,7 @@ public class UIregistroPago extends javax.swing.JFrame {
     public static javax.swing.JTextField recibo;
     private javax.swing.JButton registro;
     public static javax.swing.JTextField seguro;
+    private javax.swing.JTextField semestre;
     public static javax.swing.JTextField servsocial;
     public static javax.swing.JTextField simulacro;
     public static javax.swing.JTextField total;

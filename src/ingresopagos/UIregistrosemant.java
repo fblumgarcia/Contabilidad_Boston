@@ -52,7 +52,7 @@ public class UIregistrosemant extends javax.swing.JFrame {
 
         ciclo.setBackground(new java.awt.Color(204, 204, 204));
         ciclo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ciclo", "III", "IV", "V", "VI" }));
+        ciclo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "OTRO", "III", "IV", "V", "VI" }));
         ciclo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cicloActionPerformed(evt);
@@ -111,7 +111,12 @@ public class UIregistrosemant extends javax.swing.JFrame {
 
         anio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         anio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        anio.setText("2021");
+        anio.setText("2022");
+        anio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anioActionPerformed(evt);
+            }
+        });
         getContentPane().add(anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 220, 60));
 
         registro.setBackground(new java.awt.Color(51, 204, 255));
@@ -137,6 +142,7 @@ public class UIregistrosemant extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("empty-statement")
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         try{
             dia2=Integer.parseInt(dia.getText());//Sacando el texto de las variables
@@ -144,8 +150,13 @@ public class UIregistrosemant extends javax.swing.JFrame {
             anio2=Integer.parseInt(anio.getText());
             nombre2=(String)(nombre.getText()).toUpperCase()+"-"+(String)(semestre.getText()).toUpperCase();
             total2=Integer.parseInt(total.getText());
-            recibo2=Integer.parseInt(recibo.getText());
             ciclo2=(String)ciclo.getSelectedItem();
+            if(ciclo2=="OTRO"){
+                recibo2=0;}
+            else{
+                recibo2=Integer.parseInt(recibo.getText());}
+            
+            System.out.println(recibo2);      
                        
             ingresopagos.FechaPago fec=new ingresopagos.FechaPago();
             fec.ingresoFecha();
@@ -162,6 +173,10 @@ public class UIregistrosemant extends javax.swing.JFrame {
     private void cicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cicloActionPerformed
        
     }//GEN-LAST:event_cicloActionPerformed
+
+    private void anioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anioActionPerformed
 
     /**
      * @param args the command line arguments

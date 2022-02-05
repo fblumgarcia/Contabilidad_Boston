@@ -12,16 +12,24 @@ public class UIcrearEstudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         ciclo = new javax.swing.JComboBox<>();
         nombre = new javax.swing.JTextField();
         crear = new javax.swing.JButton();
+        semestre = new javax.swing.JComboBox<>();
+        aniot = new javax.swing.JTextField();
+        textoAniot = new javax.swing.JLabel();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Crear Estudiante");
         setMinimumSize(new java.awt.Dimension(250, 150));
         setPreferredSize(new java.awt.Dimension(700, 250));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ciclo.setBackground(new java.awt.Color(204, 204, 204));
         ciclo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -34,12 +42,15 @@ public class UIcrearEstudiante extends javax.swing.JFrame {
                 cicloActionPerformed(evt);
             }
         });
-        getContentPane().add(ciclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
 
         nombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         nombre.setText("Nombre");
-        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 700, 100));
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
 
         crear.setBackground(new java.awt.Color(153, 102, 255));
         crear.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -49,14 +60,64 @@ public class UIcrearEstudiante extends javax.swing.JFrame {
                 crearActionPerformed(evt);
             }
         });
-        getContentPane().add(crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 700, 50));
+
+        semestre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        semestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre", "I", "II" }));
+
+        aniot.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        aniot.setText("20");
+
+        textoAniot.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        textoAniot.setText("AÑO");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(crear, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(ciclo, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(textoAniot)
+                        .addGap(49, 49, 49)
+                        .addComponent(aniot, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(aniot)
+                        .addGap(2, 2, 2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 2, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ciclo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoAniot))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(crear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-public static String nombre2;
+public static String nombre2,semestre2;
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
        nombre2=nombre.getText().toUpperCase();
+       semestre2=aniot.getText()+"-"+(String) semestre.getSelectedItem();       
        nombre.setText("");
         if((String)ciclo.getSelectedItem()=="III"){
             RegistroPago cic=new RegistroPago();
@@ -75,6 +136,10 @@ public static String nombre2;
     private void cicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cicloActionPerformed
         
     }//GEN-LAST:event_cicloActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,9 +177,14 @@ public static String nombre2;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField aniot;
     private javax.swing.JComboBox<String> ciclo;
     private javax.swing.JButton crear;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     public static javax.swing.JTextField nombre;
+    private javax.swing.JComboBox<String> semestre;
+    private javax.swing.JLabel textoAniot;
     // End of variables declaration//GEN-END:variables
 
     private void setHorizontalAlignment(String center) {

@@ -66,7 +66,7 @@ public class UIbotones extends javax.swing.JFrame {
 
         semanterior.setBackground(new java.awt.Color(153, 153, 153));
         semanterior.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        semanterior.setText("Registro Pago semestre anterior o de certificados");
+        semanterior.setText("Registrar otros pagos o semestres anteriores");
         semanterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 semanteriorActionPerformed(evt);

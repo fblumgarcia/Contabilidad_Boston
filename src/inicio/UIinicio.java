@@ -12,7 +12,6 @@ public class UIinicio extends javax.swing.JFrame {
 
     public UIinicio() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     

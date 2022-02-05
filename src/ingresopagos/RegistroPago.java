@@ -17,7 +17,7 @@ import java.util.List;
 public class RegistroPago {
     public static int matriculabd,papeleriabd,segurobd,plataformabd,simulacrobd,mens1bd,mens2bd,mens3bd,mens4bd,mens5bd,otrosbd,servsocialbd,dergradobd; 
     public static String recmatriculabd,recpapeleriabd,recsegurobd,recplataformabd,recsimulacrobd,recmens1bd,recmens2bd,recmens3bd,recmens4bd,recmens5bd,recotrosbd,recservsocialbd,recdergradobd;
-    String dir="jdbc:mysql://localhost:3306/colboston", usr="root",pwd="1997";
+    String dir="jdbc:mysql://localhost:3306/colboston", usr="root",pwd="";//pws="colbos"
     public void registro_pagos(){//LLena la tabla de registro de pagos que es la general
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
@@ -40,12 +40,12 @@ public class RegistroPago {
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-              PreparedStatement stmt = conn.prepareStatement("INSERT INTO iii VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+              PreparedStatement stmt = conn.prepareStatement("INSERT INTO iii VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
               stmt.setString(1,UIcrearEstudiante.nombre2);//Lo de abajo es para llenar todas las columanas de la tabla
               stmt.setString(2,"0");stmt.setString(3,"");stmt.setString(4,"0");stmt.setString(5,"");stmt.setString(6,"0");stmt.setString(7,"");              
               stmt.setString(8,"0");stmt.setString(9,"");stmt.setString(10,"0");stmt.setString(11,"");stmt.setString(12,"0");stmt.setString(13,"");
               stmt.setString(14,"0");stmt.setString(15,"");stmt.setString(16,"0");stmt.setString(17,"");stmt.setString(18,"0");stmt.setString(19,"");
-              stmt.setString(20,"0");stmt.setString(21,"");stmt.setString(22,"0");stmt.setString(23,"");
+              stmt.setString(20,"0");stmt.setString(21,"");stmt.setString(22,"0");stmt.setString(23,"");stmt.setString(24,UIcrearEstudiante.semestre2);
               stmt.executeUpdate();
               JOptionPane.showMessageDialog(null,"Estudiante creado");
               conn.close();}       
@@ -56,7 +56,7 @@ public class RegistroPago {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from iii");
+                ResultSet rs = stmt.executeQuery("select * from iii WHERE semestre ='"+UIregistroPago.semestre2+"'");
                 UIregistroPago.nombreb.addItem("Seleccione");
                 List estudiantes=new LinkedList<>();
                 while(rs.next()){
@@ -99,7 +99,7 @@ public class RegistroPago {
             Connection conn = DriverManager.getConnection(dir,usr,pwd);
             PreparedStatement stmt = conn.prepareStatement("UPDATE `iii` SET `matricula`=?,`recibomat`=?,`papelería`=?,`recibopap`=?,`seguro`=?,`reciboseg`=?,"
                     + "`plataforma`=?,`reciboplat`=?,`simulacro`=?,`recibosimul`=?,`mensualidad1`=?,`recmens1`=?,`mensualidad2`=?,`recmens2`=?,"
-                    + "`mensualidad3`=?,`recmens3`=?,`mensualidad4`=?,`recmens4`=?,`mensualidad5`=?,`recmens5`=?,`otros`=?,`recibootr`=? WHERE `nombre`=?");//`"+UIregistroPago.nombre2+"`");//Realiza actualización en base de datos;
+                    + "`mensualidad3`=?,`recmens3`=?,`mensualidad4`=?,`recmens4`=?,`mensualidad5`=?,`recmens5`=?,`otros`=?,`recibootr`=?,`semestre`=? WHERE `nombre`=?");//`"+UIregistroPago.nombre2+"`");//Realiza actualización en base de datos;
             
             stmt.setString(1,String.valueOf(UIregistroPago.matricula2));stmt.setString(2,UIregistroPago.recmatricula2);
             stmt.setString(3,String.valueOf(UIregistroPago.papeleria2));stmt.setString(4,UIregistroPago.recpapeleria2);
@@ -112,7 +112,7 @@ public class RegistroPago {
             stmt.setString(17,String.valueOf(UIregistroPago.mens42));stmt.setString(18,UIregistroPago.recmens42);
             stmt.setString(19,String.valueOf(UIregistroPago.mens52));stmt.setString(20,UIregistroPago.recmens52);
             stmt.setString(21,String.valueOf(UIregistroPago.otros2));stmt.setString(22,UIregistroPago.recotros2);
-            stmt.setString(23,String.valueOf(UIregistroPago.nombre2));          
+            stmt.setString(23,String.valueOf(UIregistroPago.semestre2));stmt.setString(24,String.valueOf(UIregistroPago.nombre2));         
             stmt.executeUpdate();
             if(stmt.executeUpdate()>0){JOptionPane.showMessageDialog(null,"Datos guardados");}
             conn.close();}       
@@ -122,12 +122,12 @@ public class RegistroPago {
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-              PreparedStatement stmt = conn.prepareStatement("INSERT INTO iv VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+              PreparedStatement stmt = conn.prepareStatement("INSERT INTO iv VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
               stmt.setString(1,UIcrearEstudiante.nombre2);//Lo de abajo es para llenar todas las columanas de la tabla
               stmt.setString(2,"0");stmt.setString(3,"");stmt.setString(4,"0");stmt.setString(5,"");stmt.setString(6,"0");stmt.setString(7,"");              
               stmt.setString(8,"0");stmt.setString(9,"");stmt.setString(10,"0");stmt.setString(11,"");stmt.setString(12,"0");stmt.setString(13,"");
               stmt.setString(14,"0");stmt.setString(15,"");stmt.setString(16,"0");stmt.setString(17,"");stmt.setString(18,"0");stmt.setString(19,"");
-              stmt.setString(20,"0");stmt.setString(21,"");stmt.setString(22,"0");stmt.setString(23,"");
+              stmt.setString(20,"0");stmt.setString(21,"");stmt.setString(22,"0");stmt.setString(23,"");stmt.setString(24,UIcrearEstudiante.semestre2);
               stmt.executeUpdate();
               JOptionPane.showMessageDialog(null,"Estudiante creado");
               conn.close();}       
@@ -138,7 +138,7 @@ public class RegistroPago {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from iv");
+                ResultSet rs = stmt.executeQuery("select * from iv WHERE semestre ='"+UIregistroPago.semestre2+"'");
                 UIregistroPago.nombreb.addItem("Seleccione");
                 List estudiantes=new LinkedList<>();
                 while(rs.next()){
@@ -181,7 +181,7 @@ public class RegistroPago {
             Connection conn = DriverManager.getConnection(dir,usr,pwd);
             PreparedStatement stmt = conn.prepareStatement("UPDATE `iv` SET `matricula`=?,`recibomat`=?,`papelería`=?,`recibopap`=?,`seguro`=?,`reciboseg`=?,"
                     + "`plataforma`=?,`reciboplat`=?,`simulacro`=?,`recibosimul`=?,`mensualidad1`=?,`recmens1`=?,`mensualidad2`=?,`recmens2`=?,"
-                    + "`mensualidad3`=?,`recmens3`=?,`mensualidad4`=?,`recmens4`=?,`mensualidad5`=?,`recmens5`=?,`otros`=?,`recibootr`=? WHERE `nombre`=?");//`"+UIregistroPago.nombre2+"`");//Realiza actualización en base de datos;
+                    + "`mensualidad3`=?,`recmens3`=?,`mensualidad4`=?,`recmens4`=?,`mensualidad5`=?,`recmens5`=?,`otros`=?,`recibootr`=?,`semestre`=? WHERE `nombre`=?");//`"+UIregistroPago.nombre2+"`");//Realiza actualización en base de datos;
             
             stmt.setString(1,String.valueOf(UIregistroPago.matricula2));stmt.setString(2,UIregistroPago.recmatricula2);
             stmt.setString(3,String.valueOf(UIregistroPago.papeleria2));stmt.setString(4,UIregistroPago.recpapeleria2);
@@ -194,7 +194,7 @@ public class RegistroPago {
             stmt.setString(17,String.valueOf(UIregistroPago.mens42));stmt.setString(18,UIregistroPago.recmens42);
             stmt.setString(19,String.valueOf(UIregistroPago.mens52));stmt.setString(20,UIregistroPago.recmens52);
             stmt.setString(21,String.valueOf(UIregistroPago.otros2));stmt.setString(22,UIregistroPago.recotros2);
-            stmt.setString(23,String.valueOf(UIregistroPago.nombre2));          
+            stmt.setString(23,String.valueOf(UIregistroPago.semestre2));stmt.setString(24,String.valueOf(UIregistroPago.nombre2));         
             stmt.executeUpdate();
             if(stmt.executeUpdate()>0){JOptionPane.showMessageDialog(null,"Datos guardados");}
             conn.close();}       
@@ -204,12 +204,12 @@ public class RegistroPago {
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-              PreparedStatement stmt = conn.prepareStatement("INSERT INTO v VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+              PreparedStatement stmt = conn.prepareStatement("INSERT INTO v VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
               stmt.setString(1,UIcrearEstudiante.nombre2);//Lo de abajo es para llenar todas las columanas de la tabla
               stmt.setString(2,"0");stmt.setString(3,"");stmt.setString(4,"0");stmt.setString(5,"");stmt.setString(6,"0");stmt.setString(7,"");              
               stmt.setString(8,"0");stmt.setString(9,"");stmt.setString(10,"0");stmt.setString(11,"");stmt.setString(12,"0");stmt.setString(13,"");
               stmt.setString(14,"0");stmt.setString(15,"");stmt.setString(16,"0");stmt.setString(17,"");stmt.setString(18,"0");stmt.setString(19,"");
-              stmt.setString(20,"0");stmt.setString(21,"");stmt.setString(22,"0");stmt.setString(23,"");
+              stmt.setString(20,"0");stmt.setString(21,"");stmt.setString(22,"0");stmt.setString(23,"");stmt.setString(24,UIcrearEstudiante.semestre2);
               stmt.executeUpdate();
               JOptionPane.showMessageDialog(null,"Estudiante creado");
               conn.close();}       
@@ -220,7 +220,7 @@ public class RegistroPago {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from v");
+                ResultSet rs = stmt.executeQuery("select * from v WHERE semestre ='"+UIregistroPago.semestre2+"'");
                 UIregistroPago.nombreb.addItem("Seleccione");
                 List estudiantes=new LinkedList<>();
                 while(rs.next()){
@@ -263,7 +263,7 @@ public class RegistroPago {
             Connection conn = DriverManager.getConnection(dir,usr,pwd);
             PreparedStatement stmt = conn.prepareStatement("UPDATE `v` SET `matricula`=?,`recibomat`=?,`papelería`=?,`recibopap`=?,`seguro`=?,`reciboseg`=?,"
                     + "`plataforma`=?,`reciboplat`=?,`simulacro`=?,`recibosimul`=?,`mensualidad1`=?,`recmens1`=?,`mensualidad2`=?,`recmens2`=?,"
-                    + "`mensualidad3`=?,`recmens3`=?,`mensualidad4`=?,`recmens4`=?,`mensualidad5`=?,`recmens5`=?,`otros`=?,`recibootr`=? WHERE `nombre`=?");//`"+UIregistroPago.nombre2+"`");//Realiza actualización en base de datos;
+                    + "`mensualidad3`=?,`recmens3`=?,`mensualidad4`=?,`recmens4`=?,`mensualidad5`=?,`recmens5`=?,`otros`=?,`recibootr`=?,`semestre`=? WHERE `nombre`=?");//`"+UIregistroPago.nombre2+"`");//Realiza actualización en base de datos;
             
             stmt.setString(1,String.valueOf(UIregistroPago.matricula2));stmt.setString(2,UIregistroPago.recmatricula2);
             stmt.setString(3,String.valueOf(UIregistroPago.papeleria2));stmt.setString(4,UIregistroPago.recpapeleria2);
@@ -276,7 +276,7 @@ public class RegistroPago {
             stmt.setString(17,String.valueOf(UIregistroPago.mens42));stmt.setString(18,UIregistroPago.recmens42);
             stmt.setString(19,String.valueOf(UIregistroPago.mens52));stmt.setString(20,UIregistroPago.recmens52);
             stmt.setString(21,String.valueOf(UIregistroPago.otros2));stmt.setString(22,UIregistroPago.recotros2);
-            stmt.setString(23,String.valueOf(UIregistroPago.nombre2));          
+            stmt.setString(23,String.valueOf(UIregistroPago.semestre2));stmt.setString(24,String.valueOf(UIregistroPago.nombre2));         
             stmt.executeUpdate();
             if(stmt.executeUpdate()>0){JOptionPane.showMessageDialog(null,"Datos guardados");}
             conn.close();}       
@@ -286,13 +286,13 @@ public class RegistroPago {
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-              PreparedStatement stmt = conn.prepareStatement("INSERT INTO vi VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+              PreparedStatement stmt = conn.prepareStatement("INSERT INTO vi VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
               stmt.setString(1,UIcrearEstudiante.nombre2);//Lo de abajo es para llenar todas las columanas de la tabla
               stmt.setString(2,"0");stmt.setString(3,"");stmt.setString(4,"0");stmt.setString(5,"");stmt.setString(6,"0");stmt.setString(7,"");              
               stmt.setString(8,"0");stmt.setString(9,"");stmt.setString(10,"0");stmt.setString(11,"");stmt.setString(12,"0");stmt.setString(13,"");
               stmt.setString(14,"0");stmt.setString(15,"");stmt.setString(16,"0");stmt.setString(17,"");stmt.setString(18,"0");stmt.setString(19,"");
               stmt.setString(20,"0");stmt.setString(21,"");stmt.setString(22,"0");stmt.setString(23,"");stmt.setString(24,"0");stmt.setString(25,"");
-              stmt.setString(26,"0");stmt.setString(27,"");
+              stmt.setString(26,"0");stmt.setString(27,"");stmt.setString(28,UIcrearEstudiante.semestre2);
               stmt.executeUpdate();
               JOptionPane.showMessageDialog(null,"Estudiante creado");
               conn.close();}       
@@ -303,7 +303,7 @@ public class RegistroPago {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
                 Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from vi");
+                ResultSet rs = stmt.executeQuery("select * from vi WHERE semestre ='"+UIregistroPago.semestre2+"'");
                 UIregistroPago.nombreb.addItem("Seleccione");
                 List estudiantes=new LinkedList<>();
                 while(rs.next()){
@@ -349,7 +349,7 @@ public class RegistroPago {
             PreparedStatement stmt = conn.prepareStatement("UPDATE `vi` SET `matricula`=?,`recibomat`=?,`papelería`=?,`recibopap`=?,`seguro`=?,`reciboseg`=?,"
                     + "`plataforma`=?,`reciboplat`=?,`simulacro`=?,`recibosimul`=?,`mensualidad1`=?,`recmens1`=?,`mensualidad2`=?,`recmens2`=?,"
                     + "`mensualidad3`=?,`recmens3`=?,`mensualidad4`=?,`recmens4`=?,`mensualidad5`=?,`recmens5`=?,`otros`=?,`recibootr`=?,`servsocial`=?,`recservsocial`=?,"
-                    + "`dergrado`=?,`recdergrado`=? WHERE `nombre`=?");//`"+UIregistroPago.nombre2+"`");//Realiza actualización en base de datos;
+                    + "`dergrado`=?,`recdergrado`=?,`semestre`=? WHERE `nombre`=?");//`"+UIregistroPago.nombre2+"`");//Realiza actualización en base de datos;
             
             stmt.setString(1,String.valueOf(UIregistroPago.matricula2));stmt.setString(2,UIregistroPago.recmatricula2);
             stmt.setString(3,String.valueOf(UIregistroPago.papeleria2));stmt.setString(4,UIregistroPago.recpapeleria2);
@@ -364,7 +364,7 @@ public class RegistroPago {
             stmt.setString(21,String.valueOf(UIregistroPago.otros2));stmt.setString(22,UIregistroPago.recotros2);
             stmt.setString(23,String.valueOf(UIregistroPago.servsocial2));stmt.setString(24,UIregistroPago.recservsocial2);
             stmt.setString(25,String.valueOf(UIregistroPago.dergrado2));stmt.setString(26,UIregistroPago.recdergrado2);
-            stmt.setString(27,String.valueOf(UIregistroPago.nombre2));          
+            stmt.setString(27,String.valueOf(UIregistroPago.semestre2));stmt.setString(28,String.valueOf(UIregistroPago.nombre2));          
             stmt.executeUpdate();
             if(stmt.executeUpdate()>0){JOptionPane.showMessageDialog(null,"Datos guardados");}
             conn.close();}       
@@ -583,7 +583,7 @@ public void exportapagos() throws FileNotFoundException{//Para exportar a archiv
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM registro_pagos");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\Pagos.csv"));
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\Pagos.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM registro_pagos");
              rs=stmt.executeQuery();
@@ -610,8 +610,8 @@ public void exportaciclo3() throws FileNotFoundException{//Para exportar a archi
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iii");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\CicloIII.csv"));
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iii WHERE semestre ='"+UIregistroPago.semestre2+"'");
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\CicloIII.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM iii");
              rs=stmt.executeQuery();
@@ -659,8 +659,8 @@ public void exportaciclo4() throws FileNotFoundException{//Para exportar a archi
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iv");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\CicloIV.csv"));
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iv WHERE semestre ='"+UIregistroPago.semestre2+"'");
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\CicloIV.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM iv");
              rs=stmt.executeQuery();
@@ -708,8 +708,8 @@ public void exportaciclo5() throws FileNotFoundException{//Para exportar a archi
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM v");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\CicloV.csv"));
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM v WHERE semestre ='"+UIregistroPago.semestre2+"'");
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\CicloV.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM v");
              rs=stmt.executeQuery();
@@ -757,8 +757,8 @@ public void exportaciclo6() throws FileNotFoundException{//Para exportar a archi
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vi");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\fblum\\CicloVI.csv"));
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vi WHERE semestre ='"+UIregistroPago.semestre2+"'");
+             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\CicloVI.csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM vi");
              rs=stmt.executeQuery();
