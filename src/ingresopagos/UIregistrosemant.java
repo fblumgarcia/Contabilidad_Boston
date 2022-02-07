@@ -154,10 +154,8 @@ public class UIregistrosemant extends javax.swing.JFrame {
             if(ciclo2=="OTRO"){
                 recibo2=0;}
             else{
-                recibo2=Integer.parseInt(recibo.getText());}
-            
-            System.out.println(recibo2);      
-                       
+                recibo2=Integer.parseInt(recibo.getText());}        
+                                        
             ingresopagos.FechaPago fec=new ingresopagos.FechaPago();
             fec.ingresoFecha();
             try {

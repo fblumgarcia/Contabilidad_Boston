@@ -87,7 +87,7 @@ public class UIingresoGasto extends javax.swing.JFrame {
 
         concepto.setBackground(new java.awt.Color(204, 204, 204));
         concepto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        concepto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arriendo", "Aseo", "Nómina", "Papelería", "Préstamos", "Otros" }));
+        concepto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Arriendo", "Aseo", "Nómina", "Papelería", "Préstamos", "Servicios", "Otros" }));
         concepto.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 conceptoItemStateChanged(evt);

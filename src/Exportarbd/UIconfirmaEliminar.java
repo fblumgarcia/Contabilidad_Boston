@@ -68,7 +68,6 @@ public class UIconfirmaEliminar extends javax.swing.JFrame {
             b3.eliminaciclo5();
             b3.eliminaciclo6();}//cierra if
        else if(UIexportar.tables=="Ingresos y Egresos"){
-           System.out.println("aca");
             RegistroPago b4=new RegistroPago();
             b4.eliminapagos();
             RegistroGasto b5=new RegistroGasto();

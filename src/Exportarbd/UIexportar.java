@@ -111,50 +111,42 @@ public class UIexportar extends javax.swing.JFrame {
     exporta=(String) selecciona.getSelectedItem();
     RegistroGasto ex=new RegistroGasto();
     RegistroPago ep=new RegistroPago();
-        System.out.println(exporta);
-    
+    if(periodo.getText().isEmpty()){//Si esta vacio no puede exportar nada
+        System.out.println("Ingrese período");}
+    else{
+    periodo2=periodo.getText();
        if(null!=exporta)switch (exporta) {
-            case "Ciclo III":try {
-                periodo2=periodo.getText();
+            case "Ciclo III":try {                
                 ep.exportaciclo3();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
             case "Ciclo IV": try {
-                periodo2=periodo.getText();
                 ep.exportaciclo4();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             case "Ciclo V":try {
-                periodo2=periodo.getText();
                 ep.exportaciclo5();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
             case "Ciclo VI":try {
-                periodo2=periodo.getText();
                 ep.exportaciclo6();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;           
             case "Ingresos":try {
-                periodo2=periodo.getText();
                 ep.exportapagos();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
                 break;
             case "Egresos":try {
-                periodo2=periodo.getText();
                 ex.exportagastos();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
                 break;
-            
-        }
-       
-                   
-    
-   
+}//Cierra if    
+}//Cierra else
              
     }//GEN-LAST:event_exportarActionPerformed
 

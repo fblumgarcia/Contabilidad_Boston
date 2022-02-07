@@ -38,10 +38,10 @@ public class FechaPago {
            int a=(fecha1.equals(fecha3))?1:2; //Compara las dos fechas real y String
            if (a==1){ //Si son iguaales las dos fechas                          
                //Borra texto al presionar botónr registrar
-                UIregistrosemant.nombre.setText("");
-                UIregistrosemant.recibo.setText(String.valueOf(recibo2+1));
-                UIregistrosemant.total.setText(""); UIregistrosemant.semestre.setText("");
-                UIregistrosemant.ciclo.setSelectedIndex(0);
+               UIregistrosemant.nombre.setText("");
+               UIregistrosemant.recibo.setText(String.valueOf(recibo2+1));
+               UIregistrosemant.total.setText(""); UIregistrosemant.semestre.setText("");
+               UIregistrosemant.ciclo.setSelectedIndex(0);
                RegistroPago imp=new RegistroPago();//Llama método registropago
                imp.registro_pagos();//Crea la conexión con base de datos
                                    }//Cierra if

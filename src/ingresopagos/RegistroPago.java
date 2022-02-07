@@ -1,5 +1,6 @@
 package ingresopagos;
 
+import Exportarbd.UIexportar;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -17,19 +18,19 @@ import java.util.List;
 public class RegistroPago {
     public static int matriculabd,papeleriabd,segurobd,plataformabd,simulacrobd,mens1bd,mens2bd,mens3bd,mens4bd,mens5bd,otrosbd,servsocialbd,dergradobd; 
     public static String recmatriculabd,recpapeleriabd,recsegurobd,recplataformabd,recsimulacrobd,recmens1bd,recmens2bd,recmens3bd,recmens4bd,recmens5bd,recotrosbd,recservsocialbd,recdergradobd;
-    String dir="jdbc:mysql://localhost:3306/colboston", usr="root",pwd="";//pws="colbos"
+    String dir="jdbc:mysql://localhost:3306/colboston", usr="root",dirgu="C:\\Users\\fblum\\",pwd="";//pws="colbos" dirgu="C:\\Users\\colbo\\"
     public void registro_pagos(){//LLena la tabla de registro de pagos que es la general
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
               PreparedStatement stmt = conn.prepareStatement("INSERT INTO registro_pagos VALUES (?,?,?,?,?,?,?)");
-              stmt.setInt(1,FechaPago.dia);
-              stmt.setInt(2,FechaPago.mes);
-              stmt.setInt(3,FechaPago.anio);
+              stmt.setString(1,String.valueOf(FechaPago.dia));
+              stmt.setString(2,String.valueOf(FechaPago.mes));
+              stmt.setString(3,String.valueOf(FechaPago.anio));
               stmt.setString(4,FechaPago.nombre);
-              stmt.setInt(5,FechaPago.recibo);
+              stmt.setString(5,String.valueOf(FechaPago.recibo));
               stmt.setString(6,FechaPago.ciclo);
-              stmt.setInt(7,FechaPago.total);
+              stmt.setString(7,String.valueOf(FechaPago.total));
               stmt.executeUpdate();
             
           }       
@@ -582,11 +583,11 @@ public void exportapagos() throws FileNotFoundException{//Para exportar a archiv
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM registro_pagos");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\Pagos.csv"));
-             StringBuilder sb=new StringBuilder();                                              
-             ResultSet rs = stmt.executeQuery("SELECT * FROM registro_pagos");
-             rs=stmt.executeQuery();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM registro_pagos WHERE año='"+UIexportar.periodo2+"'");
+            PrintWriter pw= new PrintWriter(new File(dirgu+"Ingresos-"+UIexportar.periodo2+".csv"));
+            StringBuilder sb=new StringBuilder();                                              
+            ResultSet rs = stmt.executeQuery("SELECT * FROM registro_pagos");
+            rs=stmt.executeQuery();
             sb.append("dia");sb.append(",");sb.append("mes");sb.append(",");sb.append("año");sb.append(",");
             sb.append("nombre");sb.append(",");sb.append("recibo");sb.append(",");sb.append("ciclo");sb.append(",");
             sb.append("valor");sb.append("\r\n");
@@ -610,8 +611,8 @@ public void exportaciclo3() throws FileNotFoundException{//Para exportar a archi
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iii WHERE semestre ='"+UIregistroPago.semestre2+"'");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\CicloIII.csv"));
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iii WHERE semestre ='"+UIexportar.periodo2+"'");
+             PrintWriter pw= new PrintWriter(new File(dirgu+"CicloIII-"+UIexportar.periodo2+".csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM iii");
              rs=stmt.executeQuery();
@@ -659,8 +660,8 @@ public void exportaciclo4() throws FileNotFoundException{//Para exportar a archi
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iv WHERE semestre ='"+UIregistroPago.semestre2+"'");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\CicloIV.csv"));
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM iv WHERE semestre ='"+UIexportar.periodo2+"'");
+             PrintWriter pw= new PrintWriter(new File(dirgu+"CicloIV-"+UIexportar.periodo2+".csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM iv");
              rs=stmt.executeQuery();
@@ -708,8 +709,8 @@ public void exportaciclo5() throws FileNotFoundException{//Para exportar a archi
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM v WHERE semestre ='"+UIregistroPago.semestre2+"'");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\CicloV.csv"));
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM v WHERE semestre ='"+UIexportar.periodo2+"'");
+             PrintWriter pw= new PrintWriter(new File(dirgu+"CicloV-"+UIexportar.periodo2+".csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM v");
              rs=stmt.executeQuery();
@@ -757,8 +758,9 @@ public void exportaciclo6() throws FileNotFoundException{//Para exportar a archi
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vi WHERE semestre ='"+UIregistroPago.semestre2+"'");
-             PrintWriter pw= new PrintWriter(new File("C:\\Users\\colbo\\CicloVI.csv"));
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM vi WHERE semestre ='"+UIexportar.periodo2+"'");
+              System.out.println(UIexportar.periodo2);
+             PrintWriter pw= new PrintWriter(new File(dirgu+"CicloVI-"+UIexportar.periodo2+".csv"));
              StringBuilder sb=new StringBuilder();                                              
              ResultSet rs = stmt.executeQuery("SELECT * FROM vi");
              rs=stmt.executeQuery();
