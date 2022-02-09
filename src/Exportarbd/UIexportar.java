@@ -5,11 +5,12 @@ import ingresopagos.RegistroPago;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class UIexportar extends javax.swing.JFrame {
 
-    public static String tables,periodo2; 
+    public static String tables,periodo2,ciclo2; 
     
     public UIexportar() {
         initComponents();
@@ -112,26 +113,31 @@ public class UIexportar extends javax.swing.JFrame {
     RegistroGasto ex=new RegistroGasto();
     RegistroPago ep=new RegistroPago();
     if(periodo.getText().isEmpty()){//Si esta vacio no puede exportar nada
-        System.out.println("Ingrese período");}
-    else{
+        JOptionPane.showMessageDialog(null,"Debe colocar un período ya sea año para ingresos o egresos, o semestre para los ciclos y va año-semestre (2022-II)");}
+    else{//Si selecciona período ya busca lo que solicita
     periodo2=periodo.getText();
        if(null!=exporta)switch (exporta) {
-            case "Ciclo III":try {                
-                ep.exportaciclo3();
+            case "Ciclo III":try {
+                ciclo2="iii";
+                ep.exportaCiclo();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
             case "Ciclo IV": try {
-                ep.exportaciclo4();
+                ciclo2="iv";
+                ep.exportaCiclo();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+            break;
             case "Ciclo V":try {
-                ep.exportaciclo5();
+                ciclo2="v";
+                ep.exportaCiclo();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
             case "Ciclo VI":try {
-                ep.exportaciclo6();
+                ciclo2="vi";
+                ep.exportaCiclo();
             } catch (FileNotFoundException ex1) {
                 Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;           

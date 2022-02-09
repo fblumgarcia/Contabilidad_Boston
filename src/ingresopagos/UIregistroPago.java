@@ -21,7 +21,7 @@ public class UIregistroPago extends javax.swing.JFrame {
     public static int dia2,mes2,anio2,valor2,total2,mens12,mens22,mens32,mens42,mens52,recibo2,mens13,mens23,mens33,mens43,mens53;//Declarando variables
     public static int otros2,servsocial2,dergrado2,papeleria2,seguro2,simulacro2,plataforma2,matricula2,otros3,servsocial3,dergrado3,papeleria3,seguro3,simulacro3,plataforma3,matricula3,total3;
     public static String semestre2,recmens12,recmens22,recmens32,recmens42,recmens52,recotros2,recservsocial2,recdergrado2,recpapeleria2,recseguro2,recsimulacro2,recplataforma2;
-    public static String nombre2,ciclo2,nombre3,recmatricula2;   
+    public static String nombre2,ciclo2,nombre3,recmatricula2,ciclo3;   
     //Los que tienen sufijo 3 es para la comprobación del total con conceptos
     //Los de sufijo 2 para actualizar en base de datos         
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -327,6 +327,7 @@ public class UIregistroPago extends javax.swing.JFrame {
             recibo2=Integer.parseInt(recibo.getText());
             ciclo2=(String)ciclo.getSelectedItem();
             //Coge los conceptos y les saca el valor o los pone como cero y también con los recibos
+            //Si el concepto no esta vacio convierte eso a entero y lo añade a la base de datos, y le pone el recibo
             if(!"".equals(plataforma.getText())){plataforma3=Integer.parseInt(plataforma.getText());plataforma2=Integer.parseInt(plataforma.getText())+RegistroPago.getPlataformabd();recplataforma2=String.valueOf(recibo2)+"-"+RegistroPago.getRecplataformabd();}
             else{plataforma3=0;plataforma2=RegistroPago.getPlataformabd();recplataforma2=RegistroPago.getRecplataformabd();}
             if(!"".equals(matricula.getText())){matricula3=Integer.parseInt(matricula.getText());matricula2=Integer.parseInt(matricula.getText())+RegistroPago.getMatriculabd();recmatricula2=String.valueOf(recibo2)+"-"+RegistroPago.getRecmatriculabd();}
@@ -349,11 +350,11 @@ public class UIregistroPago extends javax.swing.JFrame {
             else{mens53=0;mens52=RegistroPago.getMens5bd();recmens52=RegistroPago.getRecmens5bd();}
             if(!"".equals(otros.getText())){otros3=Integer.parseInt(otros.getText());otros2=Integer.parseInt(otros.getText())+RegistroPago.getOtrosbd();recotros2=String.valueOf(recibo2)+"-"+RegistroPago.getRecotrosbd();}
             else{otros3=0;otros2=RegistroPago.getOtrosbd();recotros2=RegistroPago.getRecotrosbd();}
-            if(!"".equals(servsocial.getText())){servsocial3=Integer.parseInt(servsocial.getText());servsocial2=Integer.parseInt(servsocial.getText())+1;recservsocial2=String.valueOf(recibo2);}
-            else{servsocial2=0;servsocial2=1;recservsocial2="";}
-            if(!"".equals(dergrado.getText())){dergrado3=Integer.parseInt(dergrado.getText());dergrado2=Integer.parseInt(dergrado.getText())+1;recdergrado2=String.valueOf(recibo2);}
-            else{dergrado3=0;dergrado2=1;recdergrado2="";}
-            total3=mens13+mens23+mens33+mens43+mens53+otros3+servsocial3+dergrado3+plataforma3+seguro3+papeleria3+matricula3+simulacro3;
+            if(!"".equals(servsocial.getText())){servsocial3=Integer.parseInt(servsocial.getText());servsocial2=Integer.parseInt(servsocial.getText())+RegistroPago.getServsocialbd();recservsocial2=String.valueOf(recibo2)+"-"+RegistroPago.getRecservsocialbd();}
+            else{servsocial3=0;servsocial2=RegistroPago.getServsocialbd();recservsocial2=RegistroPago.getRecservsocialbd();}
+            if(!"".equals(dergrado.getText())){dergrado3=Integer.parseInt(dergrado.getText());dergrado2=Integer.parseInt(dergrado.getText())+RegistroPago.getDergradobd();recdergrado2=String.valueOf(recibo2)+"-"+RegistroPago.getRecdergradobd();}
+            else{dergrado3=0;dergrado2=RegistroPago.getDergradobd();recdergrado2=RegistroPago.getRecdergradobd();}
+            total3=mens13+mens23+mens33+mens43+mens53+otros3+servsocial3+dergrado3+plataforma3+seguro3+papeleria3+matricula3+simulacro3;//Compara que los valores sean igual al total
             
             if(total2==total3){//Comprueba que concuerde el total ingresado con el de los conceptos
                 ingresopagos.FechaPago fec=new ingresopagos.FechaPago();
@@ -379,7 +380,8 @@ public class UIregistroPago extends javax.swing.JFrame {
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
                 semestre2=semestre.getText();
-                cic.carguenombreciclo3();
+                ciclo3="iii";
+                cic.cargueNombre();
                 break;
             case "IV":
                 servsocial.setVisible(false);
@@ -388,7 +390,8 @@ public class UIregistroPago extends javax.swing.JFrame {
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
                 semestre2=semestre.getText();
-                cic.carguenombreciclo4();
+                ciclo3="iv";
+                cic.cargueNombre();
                 break;
             case "V":
                 servsocial.setVisible(false);
@@ -397,7 +400,8 @@ public class UIregistroPago extends javax.swing.JFrame {
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
                 semestre2=semestre.getText();
-                cic.carguenombreciclo5();
+                ciclo3="v";
+                cic.cargueNombre();
                 break;
             case "VI":
                 nombreb.removeAllItems();
@@ -406,38 +410,18 @@ public class UIregistroPago extends javax.swing.JFrame {
                 dergrado.setVisible(true);
                 ldergrado.setVisible(true);
                 semestre2=semestre.getText();
-                cic.carguenombreciclo6();
+                ciclo3="vi";
+                cic.cargueNombre();
                 break;
             
         }
     }//GEN-LAST:event_cicloActionPerformed
 
     private void nombrebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrebActionPerformed
-        if("III".equals((String)ciclo.getSelectedItem())){
         nombre3=(String)(nombreb.getSelectedItem());
         if(nombre3=="Seleccione"){//No hace nada apenas se selecciona el ciclo
-        }
-        else{RegistroPago cic=new RegistroPago();//CArga el elemento para la busqueda en la base de datos
-             cic.consultaciclo3();} }
-        else if("IV".equals((String)ciclo.getSelectedItem())){
-        nombre3=(String)(nombreb.getSelectedItem());
-        if(nombre3=="Seleccione"){//No hace nada apenas se selecciona el ciclo
-        }
-        else{RegistroPago cic=new RegistroPago();//CArga el elemento para la busqueda en la base de datos
-             cic.consultaciclo4();} } 
-        else if("V".equals((String)ciclo.getSelectedItem())){
-        nombre3=(String)(nombreb.getSelectedItem());
-        if(nombre3=="Seleccione"){//No hace nada apenas se selecciona el ciclo
-        }
-        else{RegistroPago cic=new RegistroPago();//CArga el elemento para la busqueda en la base de datos
-             cic.consultaciclo5();} }
-        else if("VI".equals((String)ciclo.getSelectedItem())){
-        nombre3=(String)(nombreb.getSelectedItem());
-        if(nombre3=="Seleccione"){//No hace nada apenas se selecciona el ciclo
-        }
-        else{RegistroPago cic=new RegistroPago();//CArga el elemento para la busqueda en la base de datos
-             cic.consultaciclo6();} }
-        
+        }else{RegistroPago cic=new RegistroPago();//CArga el elemento para la busqueda en la base de datos
+            cic.consultaEstudiante();}//cierra else        
     }//GEN-LAST:event_nombrebActionPerformed
 
     private void mens4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mens4ActionPerformed

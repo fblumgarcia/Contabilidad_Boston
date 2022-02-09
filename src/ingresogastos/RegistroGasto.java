@@ -2,7 +2,6 @@
 package ingresogastos;
 
 import Exportarbd.UIexportar;
-import ingresopagos.RegistroPago;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -11,11 +10,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class RegistroGasto {
-   String dir="jdbc:mysql://localhost:3306/colboston", usr="root",dirgu="C:\\Users\\fblum\\",pwd="";//pws="colbos" dirgu="C:\\Users\\colbo\\"
+   String dir="jdbc:mysql://localhost:3306/colboston", usr="root",pwd="",dirgu="C:\\Users\\fblum\\";//dirgu="C:\\Users\\colbo\\";//
     public void crearConexion(){
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
@@ -40,21 +38,20 @@ public class RegistroGasto {
       try {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM registro_gastos WHERE='"+UIexportar.periodo2+"'");
-             PrintWriter pw= new PrintWriter(new File(dirgu+"Gastos-"+UIexportar.periodo2+".csv"));
-             StringBuilder sb=new StringBuilder();                                              
-             ResultSet rs = stmt.executeQuery("SELECT * FROM registro_gastos");
-             rs=stmt.executeQuery();
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM registro_gastos WHERE año= '"+UIexportar.periodo2+"'");
+            PrintWriter pw= new PrintWriter(new File(dirgu+"Gastos-"+UIexportar.periodo2+".csv"));
+            StringBuilder sb=new StringBuilder();                                              
+            ResultSet rs = stmt.executeQuery("SELECT * FROM registro_gastos");
+            rs=stmt.executeQuery();
             sb.append("dia");sb.append(",");sb.append("mes");sb.append(",");sb.append("año");sb.append(",");
             sb.append("concepto");sb.append(",");sb.append("valor");sb.append(",");sb.append("descripcion");sb.append("\r\n");
-             while(rs.next()){
-                sb.append(rs.getString(1));sb.append(","); 
-                sb.append(rs.getString(2));sb.append(",");
-                sb.append(rs.getString(3));sb.append(",");
-                sb.append(rs.getString(4));sb.append(",");//Saca los datos de la tabla
-                sb.append(rs.getString(5));sb.append(",");
-                sb.append(rs.getString(6));sb.append("\r\n");}//Cierra while
-             pw.write(sb.toString());
+            while(rs.next()){
+                for(int i=1;i<7;i+=1){
+                    if(i==6){sb.append(rs.getString(6));sb.append("\r\n");}
+                    else{sb.append(rs.getString(i));sb.append(",");}
+                }//cierra for
+            }//Cierra while
+        pw.write(sb.toString());
         pw.close();
         conn.close();
         JOptionPane.showMessageDialog(null,"Datos exportados");

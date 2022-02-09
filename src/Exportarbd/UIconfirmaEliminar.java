@@ -9,7 +9,7 @@ public class UIconfirmaEliminar extends javax.swing.JFrame {
 
     public UIconfirmaEliminar() {
         initComponents();
-        tablas.setText(UIexportar.tables);
+        tablas.setText(UIexportar.tables);//Saca el texto de la selección
     }
 
     @SuppressWarnings("unchecked")
@@ -61,12 +61,11 @@ public class UIconfirmaEliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siActionPerformed
-       if(UIexportar.tables=="Ciclos: III,IV,V,VI"){
+       //Si presiona botón si ejecuta estos comandos que manda a borrar todo
+        if(UIexportar.tables=="Ciclos: III,IV,V,VI"){
             RegistroPago b3=new RegistroPago();
-            b3.eliminaciclo3();
-            b3.eliminaciclo4();
-            b3.eliminaciclo5();
-            b3.eliminaciclo6();}//cierra if
+            b3.eliminaTablaCiclos();
+        }//cierra if
        else if(UIexportar.tables=="Ingresos y Egresos"){
             RegistroPago b4=new RegistroPago();
             b4.eliminapagos();

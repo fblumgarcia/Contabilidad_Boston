@@ -11,14 +11,11 @@ public class FechaPago {
     //Declarando variables
         public static int dia,mes,anio,total,recibo;
         public static String nombre,ciclo;
-        
-        
-    
+           
     //Ingreso de datos  
         public void ingresoFecha(){
             }//Cierra ingresoFecha
-        
-        
+            
     //Verificación de la fecha    
        public void fecha() throws ParseException{//Se usa para registrar pagos de semestres anteriores o certifiacados
            dia=UIregistrosemant.dia2;//Ingreso de datos fecha
@@ -76,12 +73,7 @@ public class FechaPago {
                 UIregistroPago.ciclo.setSelectedIndex(0);UIregistroPago.consulta.setText("");
                 RegistroPago imp=new RegistroPago();//Llama método registropago
                 imp.registro_pagos();//Crea la conexión con base de datos e ingresa a esa tabla
-                switch(ciclo){
-                    case "III":imp.actualizaciclo3();
-                    case "IV":imp.actualizaciclo4();
-                    case "V":imp.actualizaciclo5();
-                    case "VI":imp.actualizaciclo6();
-                             }//Cierra switch             
+                imp.actualizaEstudiante();          
                                                   }//Cierra if
            else{
                JOptionPane.showMessageDialog(null,"Revise la fecha");}

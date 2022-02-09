@@ -13,7 +13,7 @@ public class UIinicio extends javax.swing.JFrame {
     public UIinicio() {
         initComponents();
     }
-
+//Al presionar los botones se dirige a las ventanas correspondientes
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

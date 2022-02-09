@@ -5,8 +5,6 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import java.sql.*;
 
 public class UIingresoGasto extends javax.swing.JFrame {
 
@@ -87,7 +85,7 @@ public class UIingresoGasto extends javax.swing.JFrame {
 
         concepto.setBackground(new java.awt.Color(204, 204, 204));
         concepto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        concepto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Arriendo", "Aseo", "Nómina", "Papelería", "Préstamos", "Servicios", "Otros" }));
+        concepto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Arriendo", "Aseo", "Nomina", "Papeleria", "Prestamos", "Servicios", "Otros" }));
         concepto.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 conceptoItemStateChanged(evt);

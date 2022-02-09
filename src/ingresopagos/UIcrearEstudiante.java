@@ -95,16 +95,17 @@ public class UIcrearEstudiante extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(aniot)
                         .addGap(2, 2, 2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 2, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ciclo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textoAniot))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ciclo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(semestre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textoAniot)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -114,23 +115,29 @@ public class UIcrearEstudiante extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-public static String nombre2,semestre2;
+public static String nombre2,semestre2,ciclo2;
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
+       //Saca información de los cuadros
        nombre2=nombre.getText().toUpperCase();
        semestre2=aniot.getText()+"-"+(String) semestre.getSelectedItem();       
        nombre.setText("");
+       //Para ubicar el ciclo en que va
         if((String)ciclo.getSelectedItem()=="III"){
             RegistroPago cic=new RegistroPago();
-            cic.creaciclo3();}
+            ciclo2="iii";
+            cic.creaEstudiante();}
        else if((String)ciclo.getSelectedItem()=="IV"){
             RegistroPago cic=new RegistroPago();
-            cic.creaciclo4();}
+            ciclo2="iv";
+            cic.creaEstudiante();}
        else if((String)ciclo.getSelectedItem()=="V"){ 
             RegistroPago cic=new RegistroPago();
-            cic.creaciclo5();}
+            ciclo2="v";
+            cic.creaEstudiante();}
        else if((String)ciclo.getSelectedItem()=="VI"){
             RegistroPago cic=new RegistroPago();
-            cic.creaciclo6();}
+            ciclo2="vi";
+            cic.creaEstudiante();}
     }//GEN-LAST:event_crearActionPerformed
 
     private void cicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cicloActionPerformed
