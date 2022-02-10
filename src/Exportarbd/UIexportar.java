@@ -14,6 +14,7 @@ public class UIexportar extends javax.swing.JFrame {
     
     public UIexportar() {
         initComponents();
+        semper.setVisible(false);
     }
 
   public static String exporta; 
@@ -28,8 +29,9 @@ public class UIexportar extends javax.swing.JFrame {
         exportar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
-        periodo = new javax.swing.JTextField();
+        anioper = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        semper = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Exportar");
@@ -73,6 +75,7 @@ public class UIexportar extends javax.swing.JFrame {
         });
         getContentPane().add(reinicioPagosGastos, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 350, 370, 30));
 
+        exportar.setBackground(new java.awt.Color(204, 255, 204));
         exportar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         exportar.setText("Exportar");
         exportar.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +83,7 @@ public class UIexportar extends javax.swing.JFrame {
                 exportarActionPerformed(evt);
             }
         });
-        getContentPane().add(exportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 150, 40));
+        getContentPane().add(exportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 150, 40));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 192, 570, 10));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -88,72 +91,80 @@ public class UIexportar extends javax.swing.JFrame {
         jLabel2.setText("¿Desea reiniciar alguna tabla?");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 230, -1, -1));
 
-        periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        periodo.addActionListener(new java.awt.event.ActionListener() {
+        anioper.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        anioper.setText("20");
+        anioper.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodoActionPerformed(evt);
+                anioperActionPerformed(evt);
             }
         });
-        getContentPane().add(periodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 120, 27));
+        getContentPane().add(anioper, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 80, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Semestre o Año");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
+        jLabel3.setText("Período");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
+
+        semper.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        semper.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semestre", "I", "II" }));
+        getContentPane().add(semper, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, 40));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionaActionPerformed
-        
+    exporta=(String) selecciona.getSelectedItem();
+    if(null!=exporta)switch (exporta) {
+        case "Ciclo III":
+            semper.setVisible(true);//Hace visible el menu de semestre
+            ciclo2="iii";//Saca el nombre del ciclo
+            break;
+        case "Ciclo IV": 
+            ciclo2="iv";
+            semper.setVisible(true);            
+            break;
+        case "Ciclo V":
+            ciclo2="v";
+            semper.setVisible(true);
+            break;
+        case "Ciclo VI":
+            ciclo2="vi";
+            semper.setVisible(true);
+            break;           
+         case "Ingresos":
+            semper.setVisible(false);
+            break;
+         case "Egresos":
+            semper.setVisible(false);
+            break;
+}//Cierra if    
+
     }//GEN-LAST:event_seleccionaActionPerformed
 
     private void exportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarActionPerformed
     exporta=(String) selecciona.getSelectedItem();
     RegistroGasto ex=new RegistroGasto();
     RegistroPago ep=new RegistroPago();
-    if(periodo.getText().isEmpty()){//Si esta vacio no puede exportar nada
-        JOptionPane.showMessageDialog(null,"Debe colocar un período ya sea año para ingresos o egresos, o semestre para los ciclos y va año-semestre (2022-II)");}
-    else{//Si selecciona período ya busca lo que solicita
-    periodo2=periodo.getText();
-       if(null!=exporta)switch (exporta) {
-            case "Ciclo III":try {
-                ciclo2="iii";
-                ep.exportaCiclo();
-            } catch (FileNotFoundException ex1) {
-                Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+    if(null!=exporta)switch (exporta) {
+        case "Ciclo III":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
+        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
-            case "Ciclo IV": try {
-                ciclo2="iv";
-                ep.exportaCiclo();
-            } catch (FileNotFoundException ex1) {
-                Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+        case "Ciclo IV": try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
+        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
-            case "Ciclo V":try {
-                ciclo2="v";
-                ep.exportaCiclo();
-            } catch (FileNotFoundException ex1) {
-                Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+        case "Ciclo V":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
+        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;
-            case "Ciclo VI":try {
-                ciclo2="vi";
-                ep.exportaCiclo();
-            } catch (FileNotFoundException ex1) {
-                Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+        case "Ciclo VI":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
+        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
             break;           
-            case "Ingresos":try {
-                ep.exportapagos();
-            } catch (FileNotFoundException ex1) {
-                Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-                break;
-            case "Egresos":try {
-                ex.exportagastos();
-            } catch (FileNotFoundException ex1) {
-                Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-                break;
-}//Cierra if    
-}//Cierra else
-             
+        case "Ingresos":try {periodo2=anioper.getText();ep.exportapagos();
+            
+        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+            break;
+        case "Egresos":try {periodo2=anioper.getText();ex.exportagastos();
+        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+            break;}
     }//GEN-LAST:event_exportarActionPerformed
 
     private void reinicioCiclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reinicioCiclosActionPerformed
@@ -168,9 +179,9 @@ public class UIexportar extends javax.swing.JFrame {
         nv.setVisible(true);        
     }//GEN-LAST:event_reinicioPagosGastosActionPerformed
 
-    private void periodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoActionPerformed
+    private void anioperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anioperActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_periodoActionPerformed
+    }//GEN-LAST:event_anioperActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,14 +219,15 @@ public class UIexportar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField anioper;
     private javax.swing.JButton exportar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField periodo;
     private javax.swing.JButton reinicioCiclos;
     private javax.swing.JButton reinicioPagosGastos;
     private javax.swing.JComboBox<String> selecciona;
+    private javax.swing.JComboBox<String> semper;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,7 +39,7 @@ public class RegistroGasto {
           Class.forName("com.mysql.cj.jdbc.Driver");
           try (Connection conn = DriverManager.getConnection(dir,usr,pwd)) {
             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM registro_gastos WHERE año= '"+UIexportar.periodo2+"'");
-            PrintWriter pw= new PrintWriter(new File(dirgu+"Gastos-"+UIexportar.periodo2+".csv"));
+            PrintWriter pw= new PrintWriter(new File(dirgu+"Egresos-"+UIexportar.periodo2+".csv"));
             StringBuilder sb=new StringBuilder();                                              
             ResultSet rs = stmt.executeQuery("SELECT * FROM registro_gastos");
             rs=stmt.executeQuery();

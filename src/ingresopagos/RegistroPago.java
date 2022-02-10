@@ -1,6 +1,7 @@
 package ingresopagos;
 
 import Exportarbd.UIexportar;
+import inicio.UIinicio;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -511,4 +512,16 @@ public void exportaCiclo() throws FileNotFoundException{//Para exportar a archiv
                 JOptionPane.showMessageDialog(null, "Se elimina las tablas de Ingresos y Gastos");
                 conn.close();}       
         } catch (ClassNotFoundException | SQLException e) {System.out.println(e);  }}//Cierra eliminar
+    
+    public void pruebaConexion(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(dir,usr,pwd);
+            UIinicio.estadoConexion.setText("Conectada");
+            UIinicio.estadoConexion.setForeground(new java.awt.Color(14,232,12));
+        }catch(Exception e){UIinicio.estadoConexion.setText("Desconectada");
+            UIinicio.estadoConexion.setForeground(new java.awt.Color(232, 12, 12));
+            }
+    }
 }
+

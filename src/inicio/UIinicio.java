@@ -3,15 +3,16 @@ package inicio;
 
 import Exportarbd.UIexportar;
 import ingresogastos.UIingresoGasto;
+import ingresopagos.RegistroPago;
 import ingresopagos.UIbotones;
-import javax.swing.JFrame;
 
 
 
 public class UIinicio extends javax.swing.JFrame {
-
+    RegistroPago pc=new RegistroPago();
     public UIinicio() {
         initComponents();
+        pc.pruebaConexion();      
     }
 //Al presionar los botones se dirige a las ventanas correspondientes
     
@@ -25,6 +26,9 @@ public class UIinicio extends javax.swing.JFrame {
         titulo = new javax.swing.JLabel();
         exportar = new javax.swing.JButton();
         escudo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        estadoConexion = new javax.swing.JLabel();
+        pruebaConexion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contabilidad Bostón");
@@ -83,6 +87,21 @@ public class UIinicio extends javax.swing.JFrame {
         escudo.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/inicio/Escudo.jpg"))); // NOI18N
         getContentPane().add(escudo, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 180, 180, 270));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("La base de datos esta: ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, 25));
+
+        estadoConexion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(estadoConexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 120, 25));
+
+        pruebaConexion.setText("Prueba conexión base de datos");
+        pruebaConexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pruebaConexionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(pruebaConexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
+
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
@@ -90,9 +109,8 @@ public class UIinicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingGastosActionPerformed
-    UIingresoGasto ig = new UIingresoGasto();
-    ig.setVisible(true);
-    
+        UIingresoGasto ig = new UIingresoGasto();
+        ig.setVisible(true);
     }//GEN-LAST:event_ingGastosActionPerformed
 
     private void ingPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingPagosActionPerformed
@@ -105,6 +123,10 @@ public class UIinicio extends javax.swing.JFrame {
         sc.setVisible(true);
     }//GEN-LAST:event_exportarActionPerformed
 
+    private void pruebaConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pruebaConexionActionPerformed
+        pc.pruebaConexion();  
+    }//GEN-LAST:event_pruebaConexionActionPerformed
+
     
     public static void main(String args[]) {
        
@@ -112,15 +134,19 @@ public class UIinicio extends javax.swing.JFrame {
             public void run() {
                 new UIinicio().setVisible(true);
             }
+            
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel escudo;
+    public static javax.swing.JLabel estadoConexion;
     private javax.swing.JButton exportar;
     private javax.swing.JButton ingGastos;
     private javax.swing.JButton ingPagos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel pregunta;
+    private javax.swing.JButton pruebaConexion;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 

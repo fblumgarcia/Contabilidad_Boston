@@ -71,8 +71,9 @@ public class UIregistroPago extends javax.swing.JFrame {
         ldergrado = new javax.swing.JLabel();
         dergrado = new javax.swing.JTextField();
         registro = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        semestre = new javax.swing.JTextField();
+        lsemestre = new javax.swing.JLabel();
+        aniosem = new javax.swing.JTextField();
+        semsem = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro Pago");
@@ -298,20 +299,25 @@ public class UIregistroPago extends javax.swing.JFrame {
         });
         getContentPane().add(registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 170, 27));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Semestre");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 3, 120, 27));
+        lsemestre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lsemestre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lsemestre.setText("Semestre");
+        getContentPane().add(lsemestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 3, 120, 27));
 
-        semestre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        semestre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        semestre.setText("año-I o II");
-        semestre.addActionListener(new java.awt.event.ActionListener() {
+        aniosem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        aniosem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        aniosem.setText("20");
+        aniosem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                semestreActionPerformed(evt);
+                aniosemActionPerformed(evt);
             }
         });
-        getContentPane().add(semestre, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 3, 120, 27));
+        getContentPane().add(aniosem, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 3, 58, 27));
+
+        semsem.setBackground(new java.awt.Color(204, 204, 204));
+        semsem.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        semsem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "I", "II" }));
+        getContentPane().add(semsem, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 3, 58, 27));
 
         pack();
         setLocationRelativeTo(null);
@@ -379,7 +385,8 @@ public class UIregistroPago extends javax.swing.JFrame {
                 dergrado.setVisible(false);
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
-                semestre2=semestre.getText();
+                semestre2=aniosem.getText()+"-"+semsem.getSelectedItem();
+                System.out.println(semestre2);
                 ciclo3="iii";
                 cic.cargueNombre();
                 break;
@@ -389,7 +396,7 @@ public class UIregistroPago extends javax.swing.JFrame {
                 dergrado.setVisible(false);
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
-                semestre2=semestre.getText();
+                semestre2=aniosem.getText()+"-"+semsem.getSelectedItem();
                 ciclo3="iv";
                 cic.cargueNombre();
                 break;
@@ -399,7 +406,7 @@ public class UIregistroPago extends javax.swing.JFrame {
                 dergrado.setVisible(false);
                 ldergrado.setVisible(false);
                 nombreb.removeAllItems();
-                semestre2=semestre.getText();
+                semestre2=aniosem.getText()+"-"+semsem.getSelectedItem();
                 ciclo3="v";
                 cic.cargueNombre();
                 break;
@@ -409,7 +416,7 @@ public class UIregistroPago extends javax.swing.JFrame {
                 lservsocial.setVisible(true);
                 dergrado.setVisible(true);
                 ldergrado.setVisible(true);
-                semestre2=semestre.getText();
+                semestre2=aniosem.getText()+"-"+semsem.getSelectedItem();
                 ciclo3="vi";
                 cic.cargueNombre();
                 break;
@@ -428,9 +435,9 @@ public class UIregistroPago extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mens4ActionPerformed
 
-    private void semestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semestreActionPerformed
+    private void aniosemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aniosemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_semestreActionPerformed
+    }//GEN-LAST:event_aniosemActionPerformed
 
     public static void main(String args[]) {
         
@@ -445,13 +452,13 @@ public class UIregistroPago extends javax.swing.JFrame {
     private javax.swing.JLabel Plataforma;
     private javax.swing.JLabel Seguro;
     private javax.swing.JTextField anio;
+    private javax.swing.JTextField aniosem;
     public static javax.swing.JComboBox<String> ciclo;
     public static javax.swing.JTextArea consulta;
     public static javax.swing.JTextField dergrado;
     private javax.swing.JTextField dia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -469,6 +476,7 @@ public class UIregistroPago extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel ldergrado;
+    private javax.swing.JLabel lsemestre;
     private javax.swing.JLabel lservsocial;
     public static javax.swing.JTextField matricula;
     public static javax.swing.JTextField mens1;
@@ -484,7 +492,7 @@ public class UIregistroPago extends javax.swing.JFrame {
     public static javax.swing.JTextField recibo;
     private javax.swing.JButton registro;
     public static javax.swing.JTextField seguro;
-    private javax.swing.JTextField semestre;
+    private javax.swing.JComboBox<String> semsem;
     public static javax.swing.JTextField servsocial;
     public static javax.swing.JTextField simulacro;
     public static javax.swing.JTextField total;
