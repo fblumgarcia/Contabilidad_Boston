@@ -377,7 +377,10 @@ public class UIregistroPago extends javax.swing.JFrame {
     }//GEN-LAST:event_registroActionPerformed
 
     private void cicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cicloActionPerformed
-      RegistroPago cic=new RegistroPago();//CArga y añade los nombres de estudiantes
+        if(4!=aniosem.getText().length()){
+            JOptionPane.showMessageDialog(null,"Revise el año del semestre ingresado");
+        }else{
+        RegistroPago cic=new RegistroPago();//CArga y añade los nombres de estudiantes
         switch((String)ciclo.getSelectedItem()) {
             case "III":
                 servsocial.setVisible(false);
@@ -421,7 +424,7 @@ public class UIregistroPago extends javax.swing.JFrame {
                 cic.cargueNombre();
                 break;
             
-        }
+        }}
     }//GEN-LAST:event_cicloActionPerformed
 
     private void nombrebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrebActionPerformed

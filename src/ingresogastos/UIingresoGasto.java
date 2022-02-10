@@ -137,23 +137,26 @@ public class UIingresoGasto extends javax.swing.JFrame {
     public static int dia2,mes2,anio2,valor2;
     public static String concepto2, descripcion2;
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
-        try{
-        dia2=Integer.parseInt(diai.getText());
-        mes2=Integer.parseInt(mesi.getText());
-        anio2=Integer.parseInt(anioi.getText());
-        valor2=Integer.parseInt(valor.getText());
-        concepto2=(String)concepto.getSelectedItem();
-        descripcion2=descripcion.getText().toUpperCase();
-        FechaGasto fec=new FechaGasto();
-        fec.ingresoFecha();
-        try {
-            fec.fecha();
-        } catch (ParseException ex) {
-            Logger.getLogger(UIingresoGasto.class.getName()).log(Level.SEVERE, null, ex);
+        if("Seleccione".equals(concepto.getSelectedItem())){
+            JOptionPane.showMessageDialog(null,"Ingrese un concepto");
+        }else{
+            try{
+            dia2=Integer.parseInt(diai.getText());
+            mes2=Integer.parseInt(mesi.getText());
+            anio2=Integer.parseInt(anioi.getText());
+            valor2=Integer.parseInt(valor.getText());
+            concepto2=(String)concepto.getSelectedItem();
+            descripcion2=descripcion.getText().toUpperCase();
+            FechaGasto fec=new FechaGasto();
+            fec.ingresoFecha();
+            try {
+                fec.fecha();
+            } catch (ParseException ex) {
+                Logger.getLogger(UIingresoGasto.class.getName()).log(Level.SEVERE, null, ex);
+            }}
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Verifique datos ingresados");
         }}
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Verifique datos ingresados");
-        }
     }//GEN-LAST:event_registroActionPerformed
              
     private void mesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesiActionPerformed

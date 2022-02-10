@@ -184,6 +184,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="pruebaConexion">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="66" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Prueba conexi&#xf3;n base de datos"/>
       </Properties>
       <Events>

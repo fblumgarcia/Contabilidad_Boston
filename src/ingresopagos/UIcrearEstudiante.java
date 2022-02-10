@@ -1,6 +1,8 @@
 
 package ingresopagos;
 
+import javax.swing.JOptionPane;
+
 public class UIcrearEstudiante extends javax.swing.JFrame {
 
         public UIcrearEstudiante() {
@@ -117,6 +119,9 @@ public class UIcrearEstudiante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 public static String nombre2,semestre2,ciclo2;
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
+       if("Ciclo".equals(ciclo.getSelectedItem())||4!=aniot.getText().length()||"Semestre".equals(semestre.getSelectedItem())){
+           JOptionPane.showMessageDialog(null,"Revise los datos ingresados");
+       }else{
        //Saca información de los cuadros
        nombre2=nombre.getText().toUpperCase();
        semestre2=aniot.getText()+"-"+(String) semestre.getSelectedItem();       
@@ -138,6 +143,7 @@ public static String nombre2,semestre2,ciclo2;
             RegistroPago cic=new RegistroPago();
             ciclo2="vi";
             cic.creaEstudiante();}
+       }
     }//GEN-LAST:event_crearActionPerformed
 
     private void cicloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cicloActionPerformed

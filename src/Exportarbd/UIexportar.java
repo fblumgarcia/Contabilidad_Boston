@@ -113,58 +113,65 @@ public class UIexportar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void seleccionaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionaActionPerformed
-    exporta=(String) selecciona.getSelectedItem();
-    if(null!=exporta)switch (exporta) {
-        case "Ciclo III":
-            semper.setVisible(true);//Hace visible el menu de semestre
-            ciclo2="iii";//Saca el nombre del ciclo
-            break;
-        case "Ciclo IV": 
-            ciclo2="iv";
-            semper.setVisible(true);            
-            break;
-        case "Ciclo V":
-            ciclo2="v";
-            semper.setVisible(true);
-            break;
-        case "Ciclo VI":
-            ciclo2="vi";
-            semper.setVisible(true);
-            break;           
-         case "Ingresos":
-            semper.setVisible(false);
-            break;
-         case "Egresos":
-            semper.setVisible(false);
-            break;
-}//Cierra if    
-
+        exporta=(String) selecciona.getSelectedItem();
+        if(null!=exporta)switch (exporta) {
+            case "Ciclo III":
+                semper.setVisible(true);//Hace visible el menu de semestre
+                ciclo2="iii";//Saca el nombre del ciclo
+                semper.setSelectedIndex(0);//Ubica la selección de semestre en el principio
+                break;
+            case "Ciclo IV": 
+                ciclo2="iv";
+                semper.setVisible(true);
+                semper.setSelectedIndex(0);
+                break;
+            case "Ciclo V":
+                ciclo2="v";
+                semper.setVisible(true);
+                semper.setSelectedIndex(0);
+                break;
+            case "Ciclo VI":
+                ciclo2="vi";
+                semper.setVisible(true);
+                semper.setSelectedIndex(0);
+                break;           
+             case "Ingresos":
+                semper.setVisible(false);
+                semper.setSelectedIndex(1);
+                break;
+             case "Egresos":
+                semper.setVisible(false);
+                semper.setSelectedIndex(1);
+                break;
+    }//Cierra if    
     }//GEN-LAST:event_seleccionaActionPerformed
 
     private void exportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarActionPerformed
-    exporta=(String) selecciona.getSelectedItem();
-    RegistroGasto ex=new RegistroGasto();
-    RegistroPago ep=new RegistroPago();
-    if(null!=exporta)switch (exporta) {
-        case "Ciclo III":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
-        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-            break;
-        case "Ciclo IV": try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
-        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-            break;
-        case "Ciclo V":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
-        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-            break;
-        case "Ciclo VI":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
-        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-            break;           
-        case "Ingresos":try {periodo2=anioper.getText();ep.exportapagos();
-            
-        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-            break;
-        case "Egresos":try {periodo2=anioper.getText();ex.exportagastos();
-        } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
-            break;}
+        if("Seleccione".equals(selecciona.getSelectedItem())||4!=anioper.getText().length()||"Semestre".equals(semper.getSelectedItem())){
+        JOptionPane.showMessageDialog(null,"Revise los datos ingresados");}else{
+        exporta=(String) selecciona.getSelectedItem();
+        RegistroGasto ex=new RegistroGasto();
+        RegistroPago ep=new RegistroPago();
+        switch (exporta) {
+            case "Ciclo III":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
+            } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+                break;
+            case "Ciclo IV": try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
+            } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+                break;
+            case "Ciclo V":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
+            } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+                break;
+            case "Ciclo VI":try {periodo2=anioper.getText()+"-"+semper.getSelectedItem();ep.exportaCiclo();
+            } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+                break;           
+            case "Ingresos":try {periodo2=anioper.getText();ep.exportapagos();
+
+            } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+                break;
+            case "Egresos":try {periodo2=anioper.getText();ex.exportagastos();
+            } catch (FileNotFoundException ex1) {Logger.getLogger(UIexportar.class.getName()).log(Level.SEVERE, null, ex1);}
+                break;}}
     }//GEN-LAST:event_exportarActionPerformed
 
     private void reinicioCiclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reinicioCiclosActionPerformed

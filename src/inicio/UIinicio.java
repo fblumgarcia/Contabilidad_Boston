@@ -94,6 +94,7 @@ public class UIinicio extends javax.swing.JFrame {
         estadoConexion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         getContentPane().add(estadoConexion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 120, 25));
 
+        pruebaConexion.setBackground(new java.awt.Color(102, 102, 255));
         pruebaConexion.setText("Prueba conexión base de datos");
         pruebaConexion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
